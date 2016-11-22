@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 # (c) 2016, Mohamed Amine Ben Asker
 #               Twitter @asker_amine, Github yurilaaziz
