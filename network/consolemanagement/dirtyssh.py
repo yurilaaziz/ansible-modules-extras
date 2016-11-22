@@ -137,7 +137,7 @@ def main():
 
     try:
         import paramiko
-    except ImportError as ex:
+    except ImportError , ex:
         module.fail_json(msg='ImportError: %s' % ex.message)
 
 
@@ -157,7 +157,7 @@ def main():
         ssh.connect( args['host'], port = int(args['port']), username = args['user'], password = args['passwd'])
         channel = ssh.invoke_shell()
         channel.settimeout(args['timeout'])
-    except Exception as err:
+    except Exception , err:
         msg = 'unable to connect to {0}: {1}'.format(args['host'], str(err))
         logging.error(msg)
         module.fail_json(msg=msg)
@@ -174,7 +174,7 @@ def main():
             data = channel.recv(2048)
             time.sleep(int(args['waittime']))
             logging.info('<<< {1} >>>'.format(cmd, data.strip()))
-        except Exception as err:
+        except Exception , err:
             msg = 'unable to exec {0}: {1}'.format(cmd, str(err))
             logging.error(msg)
             ssh.close()
@@ -182,8 +182,11 @@ def main():
         cli_output+= data + "\n"
     ssh.close()
     if args['dest']!='' :
-        with open(args['dest'], 'w+') as outputfile:
+        outputfile = open(args['dest'], 'w+')
+        try:
             outputfile.write(cli_output)
+        finally:
+            outputfile.close()
 
     module.exit_json()
 
