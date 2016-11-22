@@ -1,14 +1,27 @@
 #!/usr/bin/python
 
-# (c) 2016, Mohamed Amine Ben Asker
-#               Twitter @asker_amine, Github yurilaaziz
+# (c) 2016, Mohamed Amine Ben Asker(@asker_amine), Github yurilaaziz
 #
+# This file is part of Ansible
+#
+# This module is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this software.  If not, see <http://www.gnu.org/licenses/>.
 
 DOCUMENTATION = '''
 ---
 module: dirtyssh
 author: Amine Ben Asker, @asker_amine
-version_added: "0.1.0"
+version_added: "2.3"
 short_description: Execute commands on device over an old management console and save the output locally
 description:
     - Execute command on device over management console and save the output locally on a file
@@ -63,7 +76,18 @@ options:
         required: true
         default: None
 '''
-
+RETURN = '''
+dest:
+    description: destination file/path
+    returned: success
+    type: string
+    sample: "/tmp/output.txt"
+logfile:
+    description: logfile for debugging
+    returned: changed
+    type: string
+    sample: "/tmp/initconf.log"
+'''
 EXAMPLES = '''
 # send dirty commands from file over console server 
 - dirtyssh:
