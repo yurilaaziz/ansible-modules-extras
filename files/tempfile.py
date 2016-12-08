@@ -18,6 +18,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 
+ANSIBLE_METADATA = {'status': ['preview'],
+                    'supported_by': 'community',
+                    'version': '1.0'}
+
 DOCUMENTATION = '''
 ---
 module: tempfile
@@ -52,11 +56,15 @@ options:
 '''
 
 EXAMPLES = """
-  - name: create temporary build directory
-    tempfile: state=directory suffix=build
+- name: create temporary build directory
+  tempfile:
+    state: directory
+    suffix: build
 
-  - name: create temporary file
-    tempfile: state=file suffix=temp
+- name: create temporary file
+  tempfile:
+    state: file
+    suffix: temp
 """
 
 RETURN = '''

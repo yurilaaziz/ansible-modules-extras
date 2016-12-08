@@ -13,6 +13,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
+ANSIBLE_METADATA = {'status': ['preview'],
+                    'supported_by': 'community',
+                    'version': '1.0'}
+
 DOCUMENTATION = '''
 ---
 module: ec2_elb_facts
@@ -220,7 +224,8 @@ def main():
             names={'default': [], 'type': 'list'}
         )
     )
-    module = AnsibleModule(argument_spec=argument_spec)
+    module = AnsibleModule(argument_spec=argument_spec,
+                           supports_check_mode=True)
 
     if not HAS_BOTO:
         module.fail_json(msg='boto required for this module')

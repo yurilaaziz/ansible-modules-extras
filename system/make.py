@@ -18,6 +18,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this software.  If not, see <http://www.gnu.org/licenses/>.
 
+ANSIBLE_METADATA = {'status': ['preview'],
+                    'supported_by': 'community',
+                    'version': '1.0'}
+
 DOCUMENTATION = '''
 ---
 module: make
@@ -46,10 +50,13 @@ options:
 
 EXAMPLES = '''
 # Build the default target
-- make: chdir=/home/ubuntu/cool-project
+- make:
+    chdir: /home/ubuntu/cool-project
 
 # Run `install` target as root
-- make: chdir=/home/ubuntu/cool-project target=install
+- make:
+    chdir: /home/ubuntu/cool-project
+    target: install
   become: yes
 
 # Pass in extra arguments to build

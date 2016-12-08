@@ -14,6 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 
+ANSIBLE_METADATA = {'status': ['stableinterface'],
+                    'supported_by': 'community',
+                    'version': '1.0'}
+
 DOCUMENTATION = '''
 module: route53_zone
 short_description: add or delete Route53 zones
@@ -78,7 +82,7 @@ EXAMPLES = '''
     vpc_region: '{{ ec2_region }}'
     zone: '{{ vpc_dns_zone }}'
     state: present
-    register: zone_out
+  register: zone_out
 
 - debug:
     var: zone_out

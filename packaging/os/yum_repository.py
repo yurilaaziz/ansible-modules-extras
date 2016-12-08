@@ -25,6 +25,10 @@ from ansible.module_utils.pycompat24 import get_exception
 from ansible.module_utils.six.moves import configparser
 
 
+ANSIBLE_METADATA = {'status': ['stableinterface'],
+                    'supported_by': 'core',
+                    'version': '1.0'}
+
 DOCUMENTATION = '''
 ---
 module: yum_repository
@@ -401,15 +405,16 @@ EXAMPLES = '''
   yum_repository:
     name: epel
     description: EPEL YUM repo
-    baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
 
 - name: Add multiple repositories into the same file (1/2)
   yum_repository:
     name: epel
     description: EPEL YUM repo
     file: external_repos
-    baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
     gpgcheck: no
+
 - name: Add multiple repositories into the same file (2/2)
   yum_repository:
     name: rpmforge

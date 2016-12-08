@@ -17,6 +17,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this software.  If not, see <http://www.gnu.org/licenses/>.
 
+ANSIBLE_METADATA = {'status': ['preview'],
+                    'supported_by': 'community',
+                    'version': '1.0'}
+
 DOCUMENTATION = '''
 ---
 module: homebrew_cask
@@ -65,11 +69,28 @@ options:
         version_added: "2.2"
 '''
 EXAMPLES = '''
-- homebrew_cask: name=alfred state=present
-- homebrew_cask: name=alfred state=absent
-- homebrew_cask: name=alfred state=present install_options="appdir=/Applications"
-- homebrew_cask: name=alfred state=present install_options="debug,appdir=/Applications"
-- homebrew_cask: name=alfred state=absent install_options="force"
+- homebrew_cask:
+    name: alfred
+    state: present
+
+- homebrew_cask:
+    name: alfred
+    state: absent
+
+- homebrew_cask:
+    name: alfred
+    state: present
+    install_options: 'appdir=/Applications'
+
+- homebrew_cask:
+    name: alfred
+    state: present
+    install_options: 'debug,appdir=/Applications'
+
+- homebrew_cask:
+    name: alfred
+    state: absent
+    install_options: force
 '''
 
 import os.path

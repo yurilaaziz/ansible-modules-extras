@@ -26,6 +26,10 @@
 # This module is based on the crontab module.
 #
 
+ANSIBLE_METADATA = {'status': ['preview'],
+                    'supported_by': 'community',
+                    'version': '1.0'}
+
 DOCUMENTATION = """
 ---
 module: cronvar
@@ -437,4 +441,5 @@ def main():
     module.exit_json(msg="Unable to execute cronvar task.")
 
 
-main()
+if __name__ == '__main__':
+    main()
